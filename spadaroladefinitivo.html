@@ -1,0 +1,556 @@
+<!DOCTYPE html> <!-- Definisce il tipo di documento come HTML5 -->
+<html lang="it"> <!-- Imposta la lingua del documento come italiano -->
+
+<head> <!-- Inizio dell'area dei metadati e dei collegamenti esterni -->
+
+    <!-- Metadati -->
+    <meta charset="UTF-8"> <!-- Imposta il set di caratteri come UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Imposta la viewport per dispositivi mobili -->
+
+    <!-- Titolo della pagina -->
+    <title>Clinica SPADAROLA</title>
+
+    <!-- Stili CSS incorporati -->
+    <style>
+        /* Stili per il corpo della pagina */
+        body {
+            font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; /* Tipo di carattere per il corpo del testo */
+            margin: 0; /* Rimuove i margini esterni */
+            padding: 0; /* Rimuove il padding esterno (non c'è lo spazio tra il contenuto e il bordo dell'elemento)*/
+            background-color: #f7f7f7; /* Colore di sfondo */
+            color: #333; /* Colore del testo principale */
+            font-size: 18px; /* Dimensione del testo predefinita */
+        }
+    
+        /* Stili per il contenitore principale */
+        .container {
+            max-width: 1470px; /* Larghezza massima del contenitore */
+            margin: auto; /* Centra il contenitore nella pagina */
+            padding: 30px; /* Spazio intorno al contenuto all'interno del contenitore */
+            background-color: #fff; /* Colore di sfondo del contenitore */
+            box-shadow: 0 0 20px rgba(0,0,0,0.1); /* Ombra del contenitore 
+            (non c'è ombra ne in verticale ne in orrizontale ma solo nello spessore)*/
+            border-radius: 8px; /* Bordo arrotondato del contenitore */
+        }
+    
+        /* Stili per i titoli di livello 1, 2 e 3 */
+        h1, h2, h3 {
+            color: #0066cc; /* Colore dei titoli */
+            margin-bottom: 35px; /* Spazio inferiore tra i titoli */
+        }
+    
+        /* Stili per i paragrafi */
+        p {
+            line-height: 1.6; /* Altezza della riga */
+            margin-bottom: 30px; /* Spazio inferiore tra i paragrafi */
+        }
+    
+        /* Stili per la barra di navigazione */
+        .navigation {
+            background-color: #0066cc; /* Colore di sfondo della barra di navigazione */
+            border-radius: 8px; /* Bordo arrotondato */
+            overflow: hidden; /* Nasconde il contenuto che sfora dalla barra */
+            padding: 15px; /* Spaziatura interna */
+        }
+    
+        /* Stili per i link nella barra di navigazione */
+        .navigation a {
+            display: inline-block; /* Mostra come blocco inline */
+            color: #fff; /* Colore del testo */
+            text-align: center; /* Allinea il testo al centro */
+            padding: 14px 20px; /* Spaziatura interna */
+            text-decoration: none; /* Rimuove la sottolineatura del link */
+            font-size: 18px; /* Dimensione del testo */
+        }
+    
+        /* Stili al passaggio del mouse sui link nella barra di navigazione */
+        .navigation a:hover {
+            background-color: #003366; /* Cambia il colore di sfondo al passaggio del mouse */
+        }
+    
+        /* Stili per simulare diverse pagine */
+        .page {
+            display: none; /* Nasconde le pagine */
+        }
+    
+        .page.active {
+            display: block; /* Mostra la pagina attiva */
+        }
+    
+        /* Stili per le immagini slider */
+        .mySlides {
+            display: none; /* Nasconde le immagini */
+            margin: auto; /* Centra l'immagine */
+            width: 800px; /* Larghezza dell'immagine */
+            height: 400px; /* Altezza dell'immagine */
+            object-fit: scale-down; /* Scala l'immagine per adattarsi */
+        }
+    
+        /* Stili per i gruppi di moduli */
+        .form-group {
+            margin-bottom: 20px; /* Spazio inferiore tra i gruppi di moduli */
+        }
+    
+        /* Stili per le etichette dei moduli */
+        .form-group label {
+            display: block; /* Mostra come blocco */
+            margin-bottom: 5px; /* Spazio inferiore tra le etichette */
+            color: #333; /* Colore del testo */
+            font-weight: bold; /* Testo in grassetto */
+        }
+    
+        /* Stili per gli input di testo, le select e le textarea */
+        .form-group input[type="text"],
+        .form-group input[type="date"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%; /* Larghezza del 100% del genitore */
+            padding: 10px; /* Spaziatura interna */
+            border: 1px solid #ccc; /* Bordo */
+            border-radius: 5px; /* Bordo arrotondato */
+            box-sizing: border-box; /* Risolve la larghezza e l'altezza include il bordo e il padding */
+            font-size: 16px; /* Dimensione del testo */
+        }
+    
+        /* Stili specifici per le textarea */
+        .form-group textarea {
+            height: 100px; /* Altezza specifica */
+        }
+    
+        /* Stili per i pulsanti di invio */
+        button[type="submit"] {
+            background-color: #0066cc; /* Colore di sfondo */
+            color: #fff; /* Colore del testo */
+            border: none; /* Nessun bordo */
+            border-radius: 5px; /* Bordo arrotondato */
+            padding: 10px 20px; /* Spaziatura interna */
+            cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+            font-size: 16px; /* Dimensione del testo */
+        }
+    
+        /* Stili al passaggio del mouse sui pulsanti di invio */
+        button[type="submit"]:hover {
+            background-color: #005bb5; /* Cambia il colore di sfondo al passaggio del mouse */
+        }
+    
+        /* Stili per i servizi offerti */
+        .servizio {
+            margin-bottom: 30px; /* Spazio inferiore tra i servizi */
+            padding: 20px; /* Spaziatura interna per contenuto */
+            background-color: #f9f9f9; /* Sfondo */
+            border: 1px solid #ddd; /* Bordo */
+            border-radius: 8px; /* Bordi arrotondati */
+        }
+    
+        /* Stili per i titoli dei servizi */
+        .servizio h3 {
+            color: #0066cc; /* Colore del titolo */
+        }
+    
+        /* Stili per i paragrafi dei servizi */
+        .servizio p {
+            line-height: 1.6; /* Altezza della riga del paragrafo */
+        }
+    
+        /* Stili per il container degli articoli */
+        .articoli-container {
+            display: grid; /* Layout a griglia */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Colonne automatiche con larghezza minima di 300px */
+            gap: 30px; /* Spazio tra le colonne */
+        }
+    
+        /* Stili per singolo articolo */
+        .articolo {
+            background-color: #fff; /* Colore di sfondo */
+            border-radius: 10px; /* Bordi arrotondati */
+            padding: 25px; /* Spaziatura interna */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Ombra */
+            cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+        }
+    
+        /* Stili per i titoli degli articoli */
+        .articolo h3 {
+            color: #0066cc; /* Colore del titolo */
+            font-size: 24px; /* Dimensione del testo */
+            margin-bottom: 20px; /* Spazio inferiore tra il titolo e il paragrafo */
+        }
+    
+        /* Stili per i paragrafi degli articoli */
+        .articolo p {
+            color: #333; /* Colore del testo */
+            line-height: 1.6; /* Altezza della riga del paragrafo */
+            margin-bottom: 15px; /* Spazio inferiore tra i paragrafi */
+        }
+    
+        /* Stili specifici per il contenitore del blog */
+        #blog {
+            padding: 30px; /* Spaziatura interna */
+        }
+    
+        /* Stili per il titolo del blog */
+        #blog h2 {
+            color: #0066cc; /* Colore del titolo */
+            font-size: 36px; /* Dimensione del testo */
+            text-align: center; /* Allinea il testo al centro */
+            margin-bottom: 30px; /* Spazio inferiore tra il titolo e il contenuto */
+        }
+    
+        /* Stili per l'overlay */
+        .overlay {
+            position: fixed; /* Posizione fissa */
+            top: 0; /* Distanza dalla parte superiore */
+            left: 0; /* Distanza dalla parte sinistra */
+            width: 100%; /* Larghezza del 100% */
+            height: 100%; /* Altezza del 100% */
+            background-color: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente */
+            display: flex; /* Layout a flessione */
+            justify-content: center; /* Allinea al centro orizzontalmente */
+            align-items: center; /* Allinea al centro verticalmente */
+            z-index: 1000; /* Ordine di sovrapposizione */
+            display: none; /* Inizialmente nascosto */
+        }
+    
+        /* Stili per l'overlay attivo */
+        .overlay.active {
+            display: flex; /* Mostra l'overlay */
+        }
+    
+        /* Stili per i dettagli degli articoli */
+        .articolo-dettaglio {
+            background-color: #fff; /* Colore di sfondo */
+            border-radius: 10px; /* Bordi arrotondati */
+            padding: 25px; /* Spaziatura interna */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Ombra */
+            max-width: 800px; /* Larghezza massima */
+            width: 90%; /* Larghezza del 90% */
+            overflow-y: auto; /* Scorri verticalmente se necessario */
+            max-height: 90%; /* Altezza massima del 90% */
+        }
+    
+        /* Stili per il pulsante di chiusura */
+        .close-btn {
+            position: absolute; /* Posizione assoluta */
+            top: 15px; /* Distanza dalla parte superiore */
+            right: 15px; /* Distanza dalla parte destra */
+            cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+            font-size: 24px; /* Dimensione del testo */
+            color: #333; /* Colore del testo */
+        }
+    </style>
+<!-- Il tag <body> delinea il corpo della pagina HTML. -->
+    <body>
+        <!-- <div class="container"> serve da contenitore principale per la struttura della pagina. -->
+        <div class="container">
+            
+            <!-- All'interno, troviamo un <div> che utilizza lo stile CSS display: flex per allineare gli elementi orizzontalmente. 
+            align-items: center e justify-content: space-between vengono utilizzati rispettivamente per allineare 
+            verticalmente gli elementi al centro e spaziare gli elementi orizzontalmente. -->
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                
+                <!-- Il primo <div> contiene un <img> che mostra il logo della clinica con un testo alternativo specificato nell'attributo alt. -->
+                <div>
+                    <img src="Spadarola.png" alt="Logo Clinica SPADAROLA" style="height: 500px;"> 
+                </div>
+                
+                <!-- Il secondo <div> contiene i link di navigazione del sito. 
+                Ogni link ha un attributo onclick che chiama una funzione JavaScript showPage() per mostrare la sezione
+                corrispondente quando il link viene cliccato. -->
+                <div class="navigation">
+                    <a href="#" onclick="showPage('chi-siamo')">Chi Siamo</a>
+                    <a href="#" onclick="showPage('servizi')">Servizi</a>
+                    <a href="#" onclick="showPage('appuntamenti')">Appuntamenti</a>
+                    <a href="#" onclick="showPage('blog')">Blog o Notizie</a>
+                    <a href="#" onclick="showPage('contatti')">Contatti</a>
+                    <a href="#" onclick="showPage('privacy')">Politiche sulla Privacy</a>
+                </div>
+            </div>
+    
+            <!-- Successivamente, c'è un <div> che contiene le immagini dello slideshow con la classe mySlides. Ogni immagine
+            ha un percorso specificato nell'attributo src e un testo alternativo specificato nell'attributo alt. -->
+            <div style="margin-top: 5px;">
+                <img class="mySlides" src="medico2.jpg" alt="Immagine 1">
+                <img class="mySlides" src="medical_image1.jpg" alt="Immagine 2">
+                <img class="mySlides" src="medicinainterna.jpg" alt="Immagine 3">
+                <img class="mySlides" src="salachirurgica.jpg" alt="Immagine 4">
+                <img class="mySlides" src="anatomiapatologica.jpg" alt="Immagine 5">
+                <img class="mySlides" src="medico3.jpg" alt="Immagine 6">
+            </div>
+    
+        <!-- Il <div id="chi-siamo" class="page active"> rappresenta una sezione della pagina dedicata alla presentazione della clinica e del suo staff. -->
+        <div id="chi-siamo" class="page active">
+        <!-- <h2>Chi Siamo</h2> fornisce un'intestazione per la sezione, indicando il titolo della sezione. -->
+        <h2>Chi Siamo</h2>
+             <!-- Il paragrafo <p> fornisce una descrizione dettagliata della clinica, della sua missione e del suo staff. Lo stile inline style="line-height: 2.5;" specifica l'altezza delle righe. -->
+            <p style="line-height: 2.5;">Benvenuti alla clinica Spadarola, un luogo dedicato alla cura della vostra salute con attenzione e professionalità. Fondata con la missione di fornire cure mediche eccellenti, la nostra equipe di esperti medici e infermieri è impegnata nel garantire il benessere dei nostri pazienti. Con anni di esperienza nel settore sanitario, ci impegniamo a offrire servizi di alta qualità, personalizzati per soddisfare le esigenze individuali. La nostra visione è creare un ambiente accogliente e sicuro in cui ogni persona possa sentirsi ascoltata e supportata durante il percorso di guarigione. Siamo orgogliosi di essere al vostro fianco, promuovendo la salute e la felicità di coloro che ci scelgono come partner nella cura della loro salute. La pulizia nella nostra clinica è al primo posto, affidata ad una azienda specializzata nel settore, salvaguardando il paziente da eventuali infezioni e agenti patogeni. 
+                L'idea di fondare questa clinica è nata a scuola superiore grazie ad un lavoro assegnatoci dalla professoressa di informatica, Graziana Gervasi e dalla collaborazione di noi soci. 
+                Prima di effettuare qualsiasi intervento, ci occupiamo di effettuare un'adeguata diagnosi affinchè il risultato dell'intervento sia positivo.
+                Fondata dai rinomati dottori Jacopo Latina, Salvatore Spada e Fabrizio Marco Spadaro, la Clinica Spadarola rappresenta un punto di riferimento per la medicina interna, la chirurgia generale e l'anatomia patologica.
+                Il dottor Jacopo Latina è un esperto in medicina interna, con anni di esperienza nella diagnosi e nel trattamento di una vasta gamma di condizioni mediche. La sua dedizione alla cura dei pazienti e alla ricerca lo ha reso un leader nel campo della medicina interna.
+                Il dottor Salvatore Spada è un chirurgo generale altamente qualificato, specializzato in interventi chirurgici di routine e complessi.
+                 Con competenze avanzate e una passione per la chirurgia, il dottor Spada ha aiutato numerosi pazienti a ottenere risultati eccellenti attraverso procedure chirurgiche sicure ed efficaci.
+                Il dottor Fabrizio Marco Spadaro è un esperto in anatomia patologica, con una profonda comprensione delle malattie e dei processi patologici. Grazie alla sua expertise, la Clinica Spadarola è in grado di fornire diagnosi accurate e trattamenti mirati per una vasta gamma di condizioni mediche.
+            </p>
+        </div>
+
+        <div id="servizi" class="page">
+            <h2>Servizi</h2>
+            <div class="servizi-container">
+                <div class="servizio">
+                    <img src="medicinainterna.jpg" alt="Medicina Interna" class="servizio-img" style="max-width: 800px;">
+                    <h3>Medicina Interna</h3>
+                    <p>La nostra clinica offre una vasta gamma di servizi di medicina interna, fornendo cure complete e personalizzate per una vasta gamma di condizioni mediche. I nostri medici internisti altamente qualificati si dedicano alla diagnosi, al trattamento e alla gestione delle malattie, concentrandosi sul benessere generale del paziente e sulla sua qualità di vita.</p>
+                    <p>Con un approccio olistico alla salute, ci impegniamo a fornire cure comprensive che vanno oltre la gestione dei sintomi, concentrando l'attenzione sulle cause sottostanti della malattia e sul miglioramento del benessere a lungo termine. Utilizziamo le più recenti scoperte scientifiche e le tecnologie mediche avanzate per garantire la massima precisione e efficacia nei nostri trattamenti.</p>
+                    <p>Dal trattamento delle malattie croniche alla gestione delle emergenze mediche, siamo qui per fornire un supporto continuo e una cura empatica a ogni paziente che ci sceglie come partner nella loro salute e nel loro benessere.</p>
+                </div>
+                <div class="servizio">
+                    <img src="anatomiapatologica.jpg" alt="Anatomia Patologica" class="servizio-img" style="max-width: 800px;">
+                    <h3>Anatomia Patologica</h3>
+                    <p>La nostra equipe di anatomia patologica offre servizi diagnostici di alta qualità per identificare e analizzare una vasta gamma di malattie e condizioni mediche. Utilizziamo tecnologie all'avanguardia e procedure standardizzate per esaminare campioni di tessuto e fluidi corporei, aiutando i medici a formulare diagnosi precise e a pianificare trattamenti efficaci per i pazienti.</p>
+                    <p>Con un focus sull'eccellenza scientifica e la precisione diagnostica, lavoriamo in collaborazione con i nostri colleghi medici per fornire una valutazione completa e affidabile dei casi clinici. La nostra missione è fornire un servizio affidabile e tempestivo che supporti il processo decisionale clinico e contribuisca alla migliore gestione delle condizioni mediche dei nostri pazienti.</p>
+                    <p>Indipendentemente dalla complessità della situazione, ci impegniamo a fornire risultati accurati e tempestivi, fornendo informazioni critiche per guidare il trattamento e migliorare gli esiti clinici complessivi.</p>
+                </div>
+                <div class="servizio">
+                    <img src="salachirurgica.jpg" alt="Chirurgia Generale" class="servizio-img" style="max-width: 800px;">
+                    <h3>Chirurgia Generale</h3>
+                    <p>La nostra clinica è specializzata in interventi chirurgici generali, offrendo cure avanzate e sicure per una vasta gamma di condizioni chirurgiche. I nostri chirurghi esperti sono dedicati a fornire un'assistenza comprensiva e personalizzata, utilizzando tecniche innovative e approcci multidisciplinari per ottenere risultati ottimali per i nostri pazienti.</p>
+                    <p>Con un impegno per l'eccellenza chirurgica e la sicurezza del paziente, ci avvaliamo delle più recenti tecnologie e metodologie chirurgiche per garantire interventi sicuri ed efficaci. Dalla chirurgia laparoscopica alla chirurgia robotica, offriamo opzioni chirurgiche avanzate che consentono un recupero più rapido e una minore invasività per i pazienti.</p>
+                    <p>La nostra equipe chirurgica lavora in stretta collaborazione con altri specialisti medici per garantire un approccio integrato e multidisciplinare alla cura chirurgica. Siamo qui per offrire supporto e orientamento a ogni passo del percorso chirurgico, assicurando una cura completa e una ripresa ottimale per i nostri pazienti.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="appuntamenti" class="page">
+            <h2>Appuntamenti</h2>
+            <p>Prenotate una visita chiamando il nostro numero al <a href="tel:+390931123456">+39 0931 123456</a> o compilando il modulo online sul nostro sito web. 
+                Il nostro team sarà lieto di assistervi nella prenotazione di un appuntamento.</p>
+            <form id="appointment-form">
+                <!--Caselle della scheda da compilare-->
+                <div class="form-group">
+                    <label for="nome">Nome:</label>  <!--etichetta -->
+                    <input type="text" id="nome" name="nome" required>  <!--required: permette di rendere quel campo di testo obbligatorio. 
+                    Vuol dire che se non si inserisce nulla comparirà "Compila questo Campo", relativo al browser utilizzatto
+                     e non inserito nel codice del programma-->
+                </div>
+                
+                <div class="form-group">
+                    <label for="cognome">Cognome:</label>
+                    <input type="text" id="cognome" name="cognome" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="codice_fiscale">Codice Fiscale:</label>
+                    <input type="text" id="codice_fiscale" name="codice_fiscale" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="data_nascita">Data di nascita:</label>
+                    <input type="date" id="data_nascita" name="data_nascita" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="residenza">Residenza:</label>
+                    <input type="text" id="residenza" name="residenza" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="regione">Regione:</label>
+                    <select id="regione" name="regione">
+                        <option value="Abruzzo">Abruzzo</option>
+                        <option value="Basilicata">Basilicata</option>
+                        <option value="Calabria">Calabria</option>
+                        <option value="Campania">Campania</option>
+                        <option value="Emilia-Romagna">Emilia-Romagna</option>
+                        <option value="Friuli-Venezia Giulia">Friuli-Venezia Giulia</option>
+                        <option value="Lazio">Lazio</option>
+                        <option value="Liguria">Liguria</option>
+                        <option value="Lombardia">Lombardia</option>
+                        <option value="Marche">Marche</option>
+                        <option value="Molise">Molise</option>
+                        <option value="Piemonte">Piemonte</option>
+                        <option value="Puglia">Puglia</option>
+                        <option value="Sardegna">Sardegna</option>
+                        <option value="Sicilia">Sicilia</option>
+                        <option value="Toscana">Toscana</option>
+                        <option value="Trentino-Alto Adige">Trentino-Alto Adige</option>
+                        <option value="Umbria">Umbria</option>
+                        <option value="Valle d'Aosta>Valle d'Aosta</option>
+                        <option value="Veneto">Veneto</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <!--Scheda relativa all'utilizzo di farmaci-->
+                    <label for="farmaci">Assume Farmaci?</label>
+                    <select id="farmaci" name="farmaci" onchange="showFarmaciInput(this)"> <!--funzione relativa a JS-->
+                        <option value="no">No</option>
+                        <option value="sì">Sì</option>
+                    </select>
+                </div>
+                
+                <div id="farmaci-input" class="form-group" style="display: none;">
+                    <label for="farmaci_specifici">Se sì, quali?</label>
+                    <input type="text" id="farmaci_specifici" name="farmaci_specifici">
+                </div>
+                
+                <div class="form-group">
+                    <label for="motivazioni">Motivazioni Visita:</label>
+                    <!--casella di testo per inserire motivazioni visita-->
+                    <textarea id="motivazioni" name="motivazioni" rows="4" cols="50" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <!--datetime: si utilizza per inserire in input sia l'ora che la data dell'appuntamento nel caso specifico di questo sito -->
+                    <label for="data_ora">Scegli data e ora:</label>
+                    <input type="datetime-local" id="data_ora" name="data_ora" required> 
+                </div>
+                
+                <button type="submit">Prenota</button>
+            </form>
+        </div>
+        
+        <div id="blog" class="page">
+            <h2>Blog</h2>
+            <p>Restate aggiornati su novità, eventi e consigli sulla salute attraverso il nostro blog. Il nostro team di esperti condivide regolarmente articoli informativi per aiutarvi a rimanere informati e motivati nel vostro percorso verso il benessere.</p>
+            <div class="articoli-container">
+                <div class="articolo" onclick="showOverlay('articolo1')">
+                    <h3>Le benzodiazepine: cosa sono e quali sono i loro effetti?</h3>
+                </div>
+                <div class="articolo" onclick="showOverlay('articolo2')">
+                    <h3>Consigli per una buona igiene del sonno</h3>
+                </div>
+                <div class="articolo" onclick="showOverlay('articolo3')">
+                    <h3>Alimentazione e salute: l'importanza di una dieta equilibrata</h3>
+                </div>
+            </div>
+        </div>
+		
+		<div id="contatti" class="page">
+		<h2>Contatti</h2>
+		<p>Siamo situati in Via Salute e Benessere, 10, Floridia, Siracusa.</p>
+		<p>Per prenotare una visita o per ulteriori informazioni, contattateci al numero <a href="tel:+390931123456">+39 0931 123456</a> o via email all'indirizzo <a href="mailto:info@clinicaspadarola.it">info@clinicaspadarola.it
+		<br><br>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3182.8853618959724!2d15.159453075316595!3d37.08403715164919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1313d158c3c0d6e5%3A0x3a7e23873ef04358!2sLiceo%20Scientifico%20Statale!5e0!3m2!1sit!2sit!4v1711558939975!5m2!1sit!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></a>.</p>
+	</div>
+	
+	<div id="privacy" class="page">
+		<h2>Politiche sulla privacy</h2>
+		<p>La vostra privacy è importante per noi. 
+			Consultate la nostra politica sulla privacy per comprendere come gestiamo le vostre informazioni personali e assicuriamo la vostra sicurezza online durante l'utilizzo del nostro sito web e dei nostri servizi.</p>
+	</div>
+		
+		
+    </div>
+    
+    <!-- Overlay per l'articolo -->
+    <div id="overlay" class="overlay">
+        <div class="articolo-dettaglio">
+			<!-- bottone che richiama la funzione JS hideOverlay -->
+			<!-- &times serve a fare comparire la x di chiusura finestra -->
+			<div class="close-btn" onclick="hideOverlay()">&times;</div>
+            <div id="articolo1" class="articolo-contenuto">
+                <h3>Le benzodiazepine: cosa sono e quali sono i loro effetti?</h3>
+                <p>Le benzodiazepine sono una classe di farmaci psicotropi comunemente utilizzati per il trattamento di vari disturbi, tra cui ansia, insonnia, convulsioni, spasmi muscolari e sindrome da astinenza da alcol. Questi farmaci agiscono sul sistema nervoso centrale, producendo un effetto calmante che può ridurre l'ansia, promuovere il sonno e rilassare i muscoli.</p>
+                <p>Le benzodiazepine sono ampiamente prescritte a causa della loro efficacia nel trattare una serie di disturbi, ma è importante utilizzarle con cautela a causa del rischio di dipendenza e di effetti collaterali negativi. L'uso a lungo termine di benzodiazepine può portare a tolleranza, dipendenza fisica e psicologica, nonché a una diminuzione dell'efficacia nel tempo.</p>
+                <p>Gli effetti collaterali delle benzodiazepine possono includere sonnolenza diurna, affaticamento, vertigini, confusione mentale, perdita di memoria, problemi di concentrazione, problemi di coordinazione e dipendenza. Alcuni studi hanno anche suggerito un aumento del rischio di demenza nei pazienti anziani che assumono benzodiazepine a lungo termine.</p>
+                <p>Pur essendo efficaci nel trattare determinate condizioni, è importante utilizzare le benzodiazepine solo come indicato dal medico e per il tempo più breve possibile. È fondamentale seguire attentamente le istruzioni del medico e non interrompere improvvisamente l'assunzione di benzodiazepine senza consultare prima un professionista sanitario.</p>
+                <p>Se si sperimentano effetti collaterali o si ha preoccupazioni riguardo all'uso di benzodiazepine, è importante discuterne con un medico per valutare le opzioni di trattamento alternative e sviluppare un piano di gestione appropriato.</p>
+            </div>
+            <div id="articolo2" class="articolo-contenuto">
+                <!--strong: si utilizza per il grassetto-->
+                <h3>Consigli per una buona igiene del sonno</h3>
+                <p>Il sonno è fondamentale per la salute e il benessere generale. Tuttavia, molte persone lottano con problemi di sonno, che possono avere un impatto negativo sulla loro salute fisica e mentale. In questo articolo, esploreremo alcuni consigli pratici per migliorare la qualità del sonno e promuovere un riposo rigenerante.</p>
+                <p>1. <strong>Mantieni una routine regolare:</strong> Vai a letto e svegliati alla stessa ora ogni giorno, anche nei weekend, per stabilire un ritmo sonno-veglia coerente.</p>
+                <p>2. <strong>Crea un ambiente confortevole:</strong> Assicurati che la tua camera da letto sia fresca, silenziosa e buia per favorire il sonno profondo.</p>
+                <p>3. <strong>Limita l'uso di dispositivi elettronici:</strong> Evita schermi luminosi come smartphone e computer almeno un'ora prima di andare a dormire, poiché la luce blu può interferire con la produzione di melatonina, l'ormone del sonno.</p>
+                <p>4. <strong>Pratica la rilassazione:</strong> Prova tecniche di rilassamento come la respirazione profonda, lo stretching o la meditazione prima di coricarti per ridurre lo stress e favorire il sonno.</p>
+                <p>Seguendo questi consigli, puoi migliorare significativamente la qualità del tuo sonno e godere dei numerosi benefici per la salute che ne derivano.</p>
+            </div>
+            <div id="articolo3" class="articolo-contenuto">
+                <h3>Alimentazione e salute: l'importanza di una dieta equilibrata</h3>
+                <p>Un'alimentazione sana ed equilibrata è fondamentale per mantenere la salute e prevenire le malattie. Consumare una varietà di alimenti nutrienti fornisce al corpo i nutrienti essenziali di cui ha bisogno per funzionare correttamente e proteggersi dalle malattie.</p>
+                <p>1. <strong>Frutta e verdura:</strong> Assicurati di includere una varietà di frutta e verdura colorate nella tua dieta per ottenere vitamine, minerali e antiossidanti importanti per la salute.</p>
+                <p>2. <strong>Proteine magre:</strong> Scegli fonti di proteine magre come pollo, pesce, tofu e legumi per favorire la crescita e il ripristino muscolare senza eccesso di grassi saturi.</p>
+                <p>3. <strong>Carboidrati integrali:</strong> Opta per carboidrati integrali come cereali integrali, riso integrale e pasta integrale per fornire energia sostenuta e fibre per la salute digestiva.</p>
+                <p>4. <strong>Grassi sani:</strong> Includi grassi sani come avocado, noci e oli vegetali nella tua dieta per sostenere la salute del cuore, del cervello e della pelle.</p>
+                <p>5. <strong>Idratazione:</strong> Assicurati di bere a sufficienza acqua durante il giorno per mantenere il corpo idratato e favorire il corretto funzionamento degli organi e dei tessuti.</p>
+                <p>Adottando un'alimentazione equilibrata e variegata, puoi massimizzare il tuo benessere e ridurre il rischio di malattie croniche come obesità, diabete e malattie cardiache.</p>
+            </div>
+        </div>
+		
+    </div>
+       
+	<script>
+        function showPage(pageId) {
+			//nascondiamo tutte le pagine (le scorro con un ciclo for) rimuovendo l'attributo active
+            var pages = document.querySelectorAll('.page');
+            for (var i = 0; i < pages.length; i++) {
+                pages[i].classList.remove('active');
+            }
+            //aggiungiamo l'attributo active solo alla pagina appena cliccata
+            var pageToShow = document.getElementById(pageId);
+            if (pageToShow) {
+                pageToShow.classList.add('active');
+            }
+        }
+        //funzione impiegata per lo scorrere delle immagini
+        var myIndex = 0; //inizializziamo l'indice che scorre le immagine del carousel a 0
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+			//prendo tutti gli elementi aventi classe "mySlides", che sono le immagini del carousel
+			//con un ciclo le scorro tutte e le nascondo tutte
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+            }
+            myIndex++;
+			//porto avanti l'indice (se stavo mostrando la 3° ora mostrerò la 4°)
+			//se l'indice supera la lunghezza riparto da 1
+            if (myIndex > x.length) {myIndex = 1}  
+			//mostro soltanto quella avente indice attuale
+            x[myIndex-1].style.display = "block";  
+            setTimeout(carousel, 3000); // Ogni 3000 millisecondi = 3 secondi
+        }
+       //funzione da utilizzare per la selezione riguardo all'utulizzo dei farmaci
+        function showFarmaciInput(select) {
+            var farmaciInput = document.getElementById('farmaci-input');
+			//prendo il valore dell'elemento select che può essere sì o no
+			//se è sì
+            if (select.value === 'sì') {
+				//mostro (con stile block) l'elemento farmaci-input (quello che chiede "se sì, quali?")
+                farmaciInput.style.display = 'block';
+				//aggiungo che deve essere required: obbligatorio
+                document.getElementById('farmaci_specifici').setAttribute('required', 'required');
+            } else {
+				//se invece è no nascondo quell'elemento
+                farmaciInput.style.display = 'none';
+				//e levo il required
+                document.getElementById('farmaci_specifici').removeAttribute('required');
+            }
+        }
+		//funzione relativa agli articoli
+		function showOverlay(articoloId) {
+			//prima nascondo tutti gli elementi in overlay (in primo piano)
+			hideOverlay();
+			var overlay = document.getElementById('overlay');
+			var articoloContenuto = document.getElementById(articoloId);
+			articoloContenuto.style.display = 'block';
+			//prendo l'articolo selezionato e lo faccio diventare active così viene in primo piano
+			overlay.classList.add('active');
+		}
+
+		function hideOverlay() {
+			//rimuove active all'overlay
+			var overlay = document.getElementById('overlay');
+			overlay.classList.remove('active');
+
+			// Nascondi tutti gli articoli quando si chiude l'overlay scorrendoli con un ciclo for
+			var articoliContenuto = document.getElementsByClassName('articolo-contenuto');
+			for (var i = 0; i < articoliContenuto.length; i++) {
+				articoliContenuto[i].style.display = 'none';
+			}
+		}
+	</script>
+</body>
+</html>
